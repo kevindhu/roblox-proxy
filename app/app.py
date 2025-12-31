@@ -42,7 +42,7 @@ def require_proxy_token(f):
         # Check for proxy-token in headers OR query params (for RobloxStudio)
         token = request.headers.get('proxy-token') or request.args.get('proxy-token')
         if token != PROXY_TOKEN:
-            return Response('Unauthorized', 401)
+            return Response(f'Unauthorized - Token received: {token}', 401)
         return f(*args, **kwargs)
     return decorated_function
 
